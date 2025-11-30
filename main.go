@@ -78,5 +78,53 @@ func main() {
 	}
 	// 输出示例结束
 	fmt.Println("===== 任务调度示例结束 =====")
+	//测试接口部分
+	fmt.Println("\nInterface Function Test:")
+	// 创建 Rectangle 实例（长5，宽3）
+	rect := Rectangle{Width: 5, Height: 3}
+	// 创建 Circle 实例（半径2）
+	circle := Circle{Radius: 2}
 
+	// 调用长方形的方法并打印结果
+	fmt.Println("===== 长方形 =====")
+	fmt.Printf("长：%.2f, 宽：%.2f\n", rect.Width, rect.Height)
+	fmt.Printf("面积：%.2f\n", rect.Area())      // 输出：15.00
+	fmt.Printf("周长：%.2f\n", rect.Perimeter()) // 输出：16.00
+
+	// 调用圆形的方法并打印结果
+	fmt.Println("\n===== 圆形 =====")
+	fmt.Printf("半径：%.2f\n", circle.Radius)
+	fmt.Printf("面积：%.2f\n", circle.Area())      // 输出：12.57（π取3.14159...）
+	fmt.Printf("周长：%.2f\n", circle.Perimeter()) // 输出：12.57
+
+	//测试结构体组合部分
+	emp1 := Employee{
+		Person: Person{
+			Name: "张三",
+			Age:  30,
+		},
+		EmployeeID: "EMP001",
+	}
+
+	// 方式2：简化初始化（匿名字段可直接嵌套赋值）
+	emp2 := Employee{
+		Person: Person{
+			Name: "李四",
+			Age:  28,
+		},
+		EmployeeID: "EMP002",
+	}
+
+	// 方式3：先创建实例，再逐个赋值
+	var emp3 Employee
+	emp3.Name = "王五" // 直接赋值 Person 的 Name 字段（字段提升）
+	emp3.Age = 35    // 直接赋值 Person 的 Age 字段
+	emp3.EmployeeID = "EMP003"
+
+	// 5. 调用 PrintInfo() 方法输出员工信息
+	emp1.PrintInfo()
+	fmt.Println() // 空行分隔
+	emp2.PrintInfo()
+	fmt.Println()
+	emp3.PrintInfo()
 }
